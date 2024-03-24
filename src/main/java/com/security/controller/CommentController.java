@@ -4,10 +4,7 @@ import com.security.model.DTO.CommentDTO;
 import com.security.service.serviceImpl.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/comment")
@@ -21,8 +18,15 @@ public class CommentController {
     }
 
     @PostMapping("/comment")
-    public ResponseEntity<String> savePost(@RequestBody CommentDTO commentDTO) {
+    public ResponseEntity<String> saveComment(@RequestBody CommentDTO commentDTO) {
         String message = commentService.saveComment(commentDTO);
         return ResponseEntity.ok(message);
+    }
+
+    @DeleteMapping("/comment/{id}")
+//    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> deleteComment(@PathVariable Long id) {
+        commentService.deleteComment(id);
+        return ResponseEntity.ok("Post deleted successfully");
     }
 }

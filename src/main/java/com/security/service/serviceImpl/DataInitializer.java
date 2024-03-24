@@ -14,11 +14,8 @@ import java.util.Date;
 
 @Component
 public class DataInitializer {
-
-
     private final RoleRepo roleRepository;
     private final UserInfoRepository userDao;
-
     private final BCryptPasswordEncoder encoder;
 
     @Autowired
@@ -27,13 +24,11 @@ public class DataInitializer {
         this.userDao = userDao;
         this.encoder = encoder;
     }
-
     @PostConstruct
     public void initializeData() {
         initializeRoles();
         createAdminUser();
     }
-
     private void initializeRoles() {
         if (roleRepository.findByRoleName(Role.RoleType.ROLE_ADMIN) == null) {
             Role adminRole = new Role();
@@ -62,12 +57,12 @@ public class DataInitializer {
             adminUser.setRole(adminRole);
             adminUser.setEmail("ntb09109@gmail.com");
             adminUser.setAdress("Quy Nhơn");
-            adminUser.setPhone("090197682");
+            adminUser.setPhone("0901975682");
             adminUser.setFirstName("Nguyễn");
             adminUser.setLastName("Thanh Bảo");
 
             Calendar calendar = Calendar.getInstance();
-            calendar.set(2002, Calendar.NOVEMBER, 25);
+            calendar.set(2002, Calendar.OCTOBER, 25);
             Date birthDay = calendar.getTime();
             adminUser.setBirthDay(birthDay);
 

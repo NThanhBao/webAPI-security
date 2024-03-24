@@ -61,13 +61,6 @@ public class UserController {
         } catch (Exception e) {
             return "Invalid username or password"; //nếu sai tk hoạc mk
         }
-
-
-
     }
-
-
-
-
 }
 

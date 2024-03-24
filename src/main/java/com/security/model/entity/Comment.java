@@ -17,10 +17,9 @@ public class Comment {
     private String content;
 
     @Column(nullable = false)
-    private String createdDate; // Sử dụng kiểu String cho ngày đăng
+    private String createdDate;
     @PrePersist
     protected void onCreate() {
-        // Định dạng ngày giờ thành chuỗi ngày tháng giờ phút giây
         SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss dd-MM-yyyy");
         createdDate = formatter.format(new Date());
     }
@@ -33,5 +32,4 @@ public class Comment {
     @JoinColumn(name = "user_id", nullable = false)
     private UserInfo user;
 
-    // constructors, getters, setters
 }
